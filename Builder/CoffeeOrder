@@ -1,0 +1,54 @@
+public class CoffeeOrder {
+    private final String coffeeType;
+    private final boolean milk;
+    private final int sugar;
+    private final String extra;
+
+    private CoffeeOrder(CoffeeOrderBuilder builder) {
+        this.coffeeType = builder.coffeeType;
+        this.milk = builder.milk;
+        this.sugar = builder.sugar;
+        this.extra = builder.extra;
+    }
+
+    @Override
+    public String toString() {
+        return "CoffeeOrder{" +
+               "coffeeType='" + coffeeType + '\'' +
+               ", milk=" + milk +
+               ", sugar=" + sugar +
+               ", extra='" + extra + '\'' +
+               '}';
+    }
+
+    public static class CoffeeOrderBuilder {
+        private String coffeeType;
+        private boolean milk;
+        private int sugar;
+        private String extra;
+
+        public CoffeeOrderBuilder coffeeType(String coffeeType) {
+            this.coffeeType = coffeeType;
+            return this;
+        }
+
+        public CoffeeOrderBuilder milk(boolean milk) {
+            this.milk = milk;
+            return this;
+        }
+
+        public CoffeeOrderBuilder sugar(int sugar) {
+            this.sugar = sugar;
+            return this;
+        }
+
+        public CoffeeOrderBuilder extra(String extra) {
+            this.extra = extra;
+            return this;
+        }
+
+        public CoffeeOrder build() {
+            return new CoffeeOrder(this);
+        }
+    }
+}

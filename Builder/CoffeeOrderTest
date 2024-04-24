@@ -1,0 +1,43 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class CoffeeOrderTest {
+
+    @Test
+    public void testEspressoOrder() {
+        CoffeeOrder espresso = new CoffeeOrder.CoffeeOrderBuilder()
+            .coffeeType("Espresso")
+            .milk(false)
+            .sugar(0)
+            .build();
+        assertEquals("Espresso", espresso.coffeeType);
+        assertFalse(espresso.milk);
+        assertEquals(0, espresso.sugar);
+    }
+
+    @Test
+    public void testCappuccinoWithMilkAndSugar() {
+        CoffeeOrder cappuccino = new CoffeeOrder.CoffeeOrderBuilder()
+            .coffeeType("Cappuccino")
+            .milk(true)
+            .sugar(2)
+            .build();
+        assertEquals("Cappuccino", cappuccino.coffeeType);
+        assertTrue(cappuccino.milk);
+        assertEquals(2, cappuccino.sugar);
+    }
+
+    @Test
+    public void testLatteWithExtra() {
+        CoffeeOrder latte = new CoffeeOrder.CoffeeOrderBuilder()
+            .coffeeType("Latte")
+            .milk(true)
+            .sugar(1)
+            .extra("Caramel")
+            .build();
+        assertEquals("Latte", latte.coffeeType);
+        assertTrue(latte.milk);
+        assertEquals(1, latte.sugar);
+        assertEquals("Caramel", latte.extra);
+    }
+}
